@@ -9,16 +9,20 @@
     </head>
     <body>
         @foreach ( $movies as $movie )
-        <h2>{{ $movie['Title'] }}</h2>
+        <h2>{{ $movie['title'] }}</h2>
         <ul>
             <li>
-                {{ $movie['Genre'] }}
+                @if ( strpos( $movie['genre'], ',' ) >= 0 )
+                Genres: {{ $movie['genre'] }}
+                @else
+                Genre: {{ $movie['genre'] }}
+                @endif
             </li>
             <li>
-                {{ $movie['Director'] }}
+                Director: {{ $movie['director'] }}
             </li>
             <li>
-                <p>{{ $movie['Plot'] }}</p>
+                <a href="{{ route('movies.show', [$movie->id]) }}" >Read film's card</a>
             </li>
         </ul>
         @endforeach
