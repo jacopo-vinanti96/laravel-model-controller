@@ -64,7 +64,6 @@
         </style>
     </head>
     <body>
-        @foreach ( $movies as $movie )
         <h2>{{ $movie['Title'] }}</h2>
         <ul>
             <li>
@@ -77,6 +76,5 @@
                 <p>{{ $movie['Plot'] }}</p>
             </li>
         </ul>
-        @endforeach
     </body>
 </html>
