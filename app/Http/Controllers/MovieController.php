@@ -14,7 +14,7 @@ class MovieController extends Controller
         $year = date("Y");
         $validateFields = [
             'title' => 'required|string|max:100',
-            'film_director' => 'required|string|max:50',
+            'director' => 'required|string|max:50',
             'genres' => 'required|string|max:50',
             'plot' => 'required|string',
             'year' => 'required|numeric|min:1900|max:'.$year

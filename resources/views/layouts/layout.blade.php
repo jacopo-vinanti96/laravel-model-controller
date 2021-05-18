@@ -6,7 +6,7 @@
         <title>@yield('pageTitle')</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @yield('css')
     </head>
     <body>
