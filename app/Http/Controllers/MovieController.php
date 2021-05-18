@@ -59,7 +59,7 @@ class MovieController extends Controller
 
         return redirect()
         ->route('movies.index')
-        ->with('message', 'Il film ' . $movieNew->title . ' è stato aggiunto');
+        ->with('message', '"' . $movieNew->title . '"' . ' has been added to movies');
     }
 
     /**
@@ -105,8 +105,10 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+
+        return redirect()->route('movies.index')->with('message', '"' . $movie->title . '"' . ' has been deleted from movies');
     }
 }
