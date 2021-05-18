@@ -8,6 +8,7 @@
 @section('body')
     <h2>Add a movie</h2>
     <form action="{{ route('movies.store') }}" method="POST">
+        @csrf
         @method('POST')
         <div class="form-group">
             <label for="title">Title</label>
