@@ -7,6 +7,19 @@ Use App\Movie;
 
 class MovieController extends Controller
 {
+
+    protected $validateFields = [];
+
+    public function __construct() {
+        $year = date("Y");
+        $validateFields = [
+            'title' => 'required|string|max:100',
+            'film_director' => 'required|string|max:50',
+            'genres' => 'required|string|max:50',
+            'plot' => 'required|string',
+            'year' => 'required|numeric|min:1900|max:'.$year
+        ];
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +28,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('index', [
+        return view('movies.index', [
             'movies' => $movies,
         ]);
     }
@@ -27,7 +40,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movies.create');
     }
 
     /**
@@ -36,9 +49,17 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Request $request )
     {
-        //
+        $data = $request->all();
+
+        $request->validate( $this->validateFields );
+
+        $movieNew = Movie::create( $data );
+
+        return redirect()
+        ->route('movies.index')
+        ->with('message', 'Il film ' . $movieNew->title . ' è stato aggiunto');
     }
 
     /**
@@ -46,11 +67,11 @@ class MovieController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+     * Se qua si scrive function show(Movie $movie) Laravel trova da solo il $movie con l' id passato
+     * */
+    public function show( Movie $movie )
     {
-        $movie = Movie::find($id);
-        return view('show', [
+        return view('movies.show', [
             'movie' => $movie,
         ]);
     }
