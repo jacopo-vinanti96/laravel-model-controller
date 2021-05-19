@@ -12,12 +12,12 @@ class MovieController extends Controller
 
     public function __construct() {
         $year = date("Y");
-        $validateFields = [
-            'title' => 'required|string|max:100',
-            'director' => 'required|string|max:50',
-            'genres' => 'required|string|max:50',
-            'plot' => 'required|string',
-            'year' => 'required|numeric|min:1900|max:'.$year
+        $this->validateFields = [
+            'title' => 'required | string | max:100',
+            'director' => 'required | string | max:50',
+            'genre' => 'required | string | max:80',
+            'plot' => 'required | string',
+            'year' => 'required | numeric | min:1900 | max:'.$year
         ];
     } 
     /**

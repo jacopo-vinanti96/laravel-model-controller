@@ -31,13 +31,6 @@
         <li>
             <a href="{{ route('movies.show', [ $movie->id ]) }}" >Read film's card</a>
         </li>
-        <li>
-            <form action="{{route('movies.destroy', [ $movie->id ])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Elimina</button>
-            </form>
-        </li>
     </ul>
     @endforeach
 @endsection
