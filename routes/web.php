@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('movies', 'MovieController');
+Route::get('/', 'MovieController@vueIndex')->name('Home');

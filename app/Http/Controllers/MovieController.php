@@ -34,6 +34,19 @@ class MovieController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function vueIndex()
+    {
+        $movies = Movie::all();
+        return view('movies.vue_index', [
+            'movies' => $movies,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

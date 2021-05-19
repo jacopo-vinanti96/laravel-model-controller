@@ -1840,7 +1840,28 @@ module.exports = {
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+console.log('ciao');
+var app = new Vue({
+  el: '#app',
+  data: {
+    baseURL: '/api/movies'
+  },
+  methods: {
+    getMovies: function getMovies() {
+      axios.get(this.baseURL).then(function (arr) {
+        console.log(arr);
+      });
+    }
+  },
+  mounted: function mounted() {
+    getMovies();
+  }
+});
 
 /***/ }),
 
