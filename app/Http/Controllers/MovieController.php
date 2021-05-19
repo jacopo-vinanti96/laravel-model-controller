@@ -102,7 +102,8 @@ class MovieController extends Controller
 
         $movie->update( $data );
 
-        return redirect()->route('movies.show', $movie);
+        return redirect()
+        ->route('movies.show', $movie);
     }
 
     /**
@@ -115,6 +116,8 @@ class MovieController extends Controller
     {
         $movie->delete();
 
-        return redirect()->route('movies.index')->with('message', '"' . $movie->title . '"' . ' has been deleted from movies');
+        return redirect()
+        ->route('movies.index')
+        ->with('message', '"' . $movie->title . '"' . ' has been deleted from movies');
     }
 }
