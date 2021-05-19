@@ -2,22 +2,21 @@ const { default: axios } = require('axios');
 
 require('./bootstrap');
 
-console.log('ciao');
-
 const app = new Vue ({
     el: '#app',
     data: {
-        baseURL: '/api/movies',
+        baseURL: 'api/movies',
+        movies: [],
     },
     methods: {
         getMovies() {
             axios.get( this.baseURL )
             .then( (arr) => {
-                console.log(arr);
+                this.movies = arr.data;
             });
         },
     },
     mounted: function () {
-        getMovies();
+        this.getMovies();
     }
 });

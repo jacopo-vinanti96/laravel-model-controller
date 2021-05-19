@@ -1845,21 +1845,23 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-console.log('ciao');
 var app = new Vue({
   el: '#app',
   data: {
-    baseURL: '/api/movies'
+    baseURL: 'api/movies',
+    movies: []
   },
   methods: {
     getMovies: function getMovies() {
+      var _this = this;
+
       axios.get(this.baseURL).then(function (arr) {
-        console.log(arr);
+        _this.movies = arr.data;
       });
     }
   },
   mounted: function mounted() {
-    getMovies();
+    this.getMovies();
   }
 });
 

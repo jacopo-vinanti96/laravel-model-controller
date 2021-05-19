@@ -7,7 +7,25 @@ Movie Controller - Home
 @section('body')
 <div id="app">
     <h2>Home</h2>
-
+    <ul v-for="movie in movies">
+        <li>
+            Title: @{{ movie.title }}
+        </li>
+        <li>
+            <span v-if="movie.genre.includes(',')">Genres: </span>
+            <span v-else>Genre: </span> 
+            @{{ movie.genre }}
+        </li>
+        <li>
+            Director: @{{ movie.director }}
+        </li>
+        <li>
+            Year: @{{ movie.year }}
+        </li>
+        <li>
+            Plot: @{{ movie.plot }}
+        </li>
+    </ul>
 </div>
 @endsection
 
